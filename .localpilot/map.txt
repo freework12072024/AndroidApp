@@ -1,0 +1,197 @@
+## WORKSPACE EXECUTIVE SUMMARY (YAML)
+# Generated: 2026-09-05T17:39:14.6190595+05:30
+# Root: C:\Users\Rajiv Kr Choudhary\source\repos\AuthSolution
+Architecture:
+  Type: Backend (C#/.NET)
+  Scale: 70 relevant source files
+  Components: 0
+  Controllers: 4
+  Models: 9
+  Services: 8
+---
+- File: AuthSolution.sln
+  Preview: " Microsoft Visual Studio Solution File, Format Version 12.00 # Visual Studio Version 17 VisualStudioVersion = 17.14.36414.22 d17.14 MinimumVisualStudi..."
+- File: Api\Api.csproj
+  Preview: "<Project Sdk='Microsoft.NET.Sdk.Web'>  <PropertyGroup>   <TargetFramework>net8.0</TargetFramework>   <Nullable>enable</Nullable>   <ImplicitUsings>ena..."
+- File: AuthSolution\AuthSolution.csproj
+  Preview: "<Project Sdk='Microsoft.NET.Sdk'> 	<PropertyGroup> 		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks> 		<TargetFramew..."
+- File: .aider.chat.history.md
+  Preview: " # aider chat started at 2026-08-28 11:05:45 > You can skip this check with --no-gitignore  > Add .aider* to .gitignore (recommended)? (Y)es/(N)o [Yes..."
+- File: docker-compose.yml
+  Preview: "version: '3.4' services:  api:   build:    context: .    dockerfile: Api/Dockerfile   ports:    - '5127:80'   environment:    - ASPNETCORE_ENVIRONMENT..."
+- File: Api\appsettings.Development.json
+  Preview: "{  'Logging': {   'LogLevel': {    'Default': 'Information',    'Microsoft.AspNetCore': 'Warning'   }  } } "
+- File: Api\appsettings.json
+  Preview: "{  'ConnectionStrings': {   'SQLConnectionString': 'Data Source=androiddb.database.windows.net;Initial Catalog=AndroidApp;User ID=androiddb;Password=A..."
+- File: Api\Program.cs
+  Preview: "using Api.Models; using Api.Services; using Microsoft.AspNetCore.Authentication.JwtBearer; using Microsoft.EntityFrameworkCore; using Microsoft.Extens..."
+- File: Api\WeatherForecast.cs
+  Symbols: [WeatherForecast]
+  Preview: "namespace Api {   public class WeatherForecast   {     public DateOnly Date { get; set; }     public int TemperatureC { get; set; }     public int Tem..."
+- File: AuthSolution\ActivationPage.xaml.cs
+  Symbols: [ActivationPage]
+  Preview: "using AuthSolution.Services; namespace AuthSolution; public partial class ActivationPage : ContentPage {   private readonly AuthService _auth;   priva..."
+- File: AuthSolution\App.xaml.cs
+  Symbols: [App, App, InitializeNotifications, OnNewMessageReceived]
+  Preview: "using AuthSolution; using AuthSolution.Services; using Microsoft.Extensions.DependencyInjection; using Microsoft.Maui.ApplicationModel; namespace Auth..."
+- File: AuthSolution\AppShell.xaml.cs
+  Symbols: [AppShell, AppShell]
+  Preview: "namespace AuthSolution {   public partial class AppShell : Shell   {     public AppShell()     {       InitializeComponent();     }   } } "
+- File: AuthSolution\ChatPage.xaml.cs
+  Symbols: [OnSendClicked, StartAutoRefresh, StopAutoRefresh, catch, catch, catch, catch, OnDisappearing, InitAsync, LoadMessages, OnAppearing, RefreshLoop, ChatPage, ChatPage]
+  Preview: "using AuthSolution.Models; using AuthSolution.Services; using System.Collections.ObjectModel; namespace AuthSolution; public partial class ChatPage : ..."
+- File: AuthSolution\ForgotPage.xaml.cs
+  Symbols: [ForgotPage, ForgotPage]
+  Preview: "using AuthSolution.Services; namespace AuthSolution; public partial class ForgotPage : ContentPage {   private readonly AuthService _auth;   public Fo..."
+- File: AuthSolution\HomePage.xaml.cs
+  Symbols: [LoadUsers, OnLogoutClicked, OnUserTapped, catch, catch, HomePage, HomePage]
+  Preview: "using AuthSolution.Models; using AuthSolution.Services; namespace AuthSolution; public partial class HomePage : ContentPage {   private readonly UserS..."
+- File: AuthSolution\LoginPage.xaml.cs
+  Symbols: [LoginPage, LoginPage, OnLoginClicked, UserService]
+  Preview: "using AuthSolution.Services; using System.Text.Json; namespace AuthSolution; public partial class LoginPage : ContentPage {   private readonly AuthSer..."
+- File: AuthSolution\MainPage.xaml.cs
+  Symbols: [MainPage, MainPage]
+  Preview: "namespace AuthSolution {   public partial class MainPage : ContentPage   {     int count = 0;     public MainPage()     {       InitializeComponent();..."
+- File: AuthSolution\MauiProgram.cs
+  Symbols: [CreateMauiApp, MauiProgram]
+  Preview: "using AuthSolution.Services; using Microsoft.Extensions.Logging; namespace AuthSolution {   public static class MauiProgram   {     public static Maui..."
+- File: AuthSolution\ResetPage.xaml.cs
+  Symbols: [ResetPage, ResetPage]
+  Preview: "using AuthSolution.Services; namespace AuthSolution; public partial class ResetPage : ContentPage {   private readonly AuthService _auth;   public Res..."
+- File: AuthSolution\SignupPage.xaml.cs
+  Symbols: [SignupPage]
+  Preview: "using AuthSolution.Services; namespace AuthSolution; public partial class SignupPage : ContentPage {   private readonly AuthService _auth;   private r..."
+- File: .github\workflows\main.yml
+  Preview: "name: Build and Deploy API to Azure on:  push:   branches:    - main  workflow_dispatch: jobs:  build:   runs-on: windows-latest   steps:    - name: C..."
+- File: Api\Controllers\AuthController.cs
+  Preview: "using Api.Models; using Api.Services; using Microsoft.AspNetCore.Authorization; using Microsoft.AspNetCore.Mvc; using Microsoft.EntityFrameworkCore; u..."
+- File: Api\Controllers\ChatController.cs
+  Symbols: [ChatController, ChatController, GetConversation, SendMessage]
+  Preview: "using Api.Models; using Microsoft.AspNetCore.Mvc; using Microsoft.EntityFrameworkCore; namespace Api.Controllers {   [ApiController]   [Route('api/[co..."
+- File: Api\Controllers\UserController.cs
+  Symbols: [GetUsers, UserController, UserController]
+  Preview: "// UserController.cs using Microsoft.AspNetCore.Mvc; using Api.Models; using Microsoft.EntityFrameworkCore; namespace Api.Controllers {   [ApiControll..."
+- File: Api\Controllers\WeatherForecastController.cs
+  Symbols: [WeatherForecastController]
+  Preview: "using Microsoft.AspNetCore.Mvc; namespace Api.Controllers {   [ApiController]   [Route('[controller]')]   public class WeatherForecastController : Con..."
+- File: Api\Migrations\20250906143049_InitialCreate.cs
+  Symbols: [InitialCreate]
+  Preview: "using System; using Microsoft.EntityFrameworkCore.Migrations; #nullable disable namespace Api.Migrations {   /// <inheritdoc />   public partial class..."
+- File: Api\Migrations\20250906143049_InitialCreate.Designer.cs
+  Preview: "// <auto-generated /> using System; using Api.Models; using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Infrastructure; using M..."
+- File: Api\Migrations\20260810063458_AddUserProfileAndActivation.cs
+  Symbols: [AddUserProfileAndActivation]
+  Preview: "using System; using Microsoft.EntityFrameworkCore.Migrations; #nullable disable namespace Api.Migrations {   /// <inheritdoc />   public partial class..."
+- File: Api\Migrations\20260810063458_AddUserProfileAndActivation.Designer.cs
+  Preview: "// <auto-generated /> using System; using Api.Models; using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Infrastructure; using M..."
+- File: Api\Migrations\20260810065840_AddStatesAndCities.cs
+  Symbols: [AddStatesAndCities]
+  Preview: "using Microsoft.EntityFrameworkCore.Migrations; #nullable disable #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional namespa..."
+- File: Api\Migrations\20260810065840_AddStatesAndCities.Designer.cs
+  Preview: "// <auto-generated /> using System; using Api.Models; using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Infrastructure; using M..."
+- File: Api\Migrations\20260830073929_AddChatMessages.cs
+  Preview: "using System; using Microsoft.EntityFrameworkCore.Migrations; #nullable disable namespace Api.Migrations {   /// <inheritdoc />   public partial class..."
+- File: Api\Migrations\20260830073929_AddChatMessages.Designer.cs
+  Preview: "// <auto-generated /> using System; using Api.Models; using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Infrastructure; using M..."
+- File: Api\Migrations\AppDbContextModelSnapshot.cs
+  Preview: "// <auto-generated /> using System; using Api.Models; using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Infrastructure; using M..."
+- File: Api\Models\AppDbContext.cs
+  Symbols: [base, AppDbContext, OnModelCreating]
+  Preview: "using Microsoft.EntityFrameworkCore; namespace Api.Models {   public class AppDbContext : DbContext   {     public AppDbContext(DbContextOptions<AppDb..."
+- File: Api\Models\ChatMessage.cs
+  Symbols: [ChatMessage]
+  Preview: "namespace Api.Models {   public class ChatMessage   {     public int Id { get; set; }     public int SenderId { get; set; }     public int ReceiverId ..."
+- File: Api\Models\ChatMessageDto.cs
+  Symbols: [ChatMessageDto]
+  Preview: "namespace Api.Models {   public class ChatMessageDto   {     public int Id { get; set; }     public int SenderId { get; set; }     public int Receiver..."
+- File: Api\Models\City.cs
+  Symbols: [City]
+  Preview: "namespace Api.Models {   public class City   {     public int Id { get; set; }     public string Name { get; set; } = string.Empty;     public int Sta..."
+- File: Api\Models\State.cs
+  Symbols: [State]
+  Preview: "namespace Api.Models {   public class State   {     public int Id { get; set; }     public string Name { get; set; } = string.Empty;   } }"
+- File: Api\Models\User.cs
+  Symbols: [User]
+  Preview: "using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; namespace Api.Models {   public class User   {     pu..."
+- File: Api\Models\UserDto.cs
+  Symbols: [UserDto]
+  Preview: "namespace Api.Models {   public class UserDto   {     public int Id { get; set; }     public string Name { get; set; } = string.Empty;     public bool..."
+- File: Api\Properties\launchSettings.json
+  Preview: "{  '$schema': 'http://json.schemastore.org/launchsettings.json',  'iisSettings': {   'windowsAuthentication': false,   'anonymousAuthentication': true..."
+- File: Api\Services\EmailQueue.cs
+  Symbols: [EmailItem]
+  Preview: "using System.Collections.Concurrent; using System.Threading; using System.Threading.Tasks; namespace Api.Services {   public class EmailItem   {     p..."
+- File: Api\Services\EmailSenderWorker.cs
+  Symbols: [EmailSenderWorker]
+  Preview: "using Microsoft.Extensions.Hosting; using Microsoft.Extensions.Logging; using System.Threading; using System.Threading.Tasks; using Microsoft.Extensio..."
+- File: Api\Services\EmailService.cs
+  Symbols: [EmailService]
+  Preview: "using MailKit.Net.Smtp; using MailKit.Security; using MimeKit; using Microsoft.Extensions.Logging;  namespace Api.Services {   public class EmailServi..."
+- File: Api\Services\IEmailService.cs
+  Symbols: [IEmailService]
+  Preview: "namespace Api.Services {   public interface IEmailService   {     Task SendEmailAsync(string toEmail, string subject, string body);   } } "
+- File: Api\Services\IJwtService.cs
+  Symbols: [IJwtService]
+  Preview: "using Api.Models; namespace Api.Services {   public interface IJwtService   {     Task<string> GenerateToken(User user);   } } "
+- File: Api\Services\JwtService.cs
+  Symbols: [JwtService]
+  Preview: "using Api.Models; using Microsoft.IdentityModel.Tokens; using System.IdentityModel.Tokens.Jwt; using System.Security.Claims; using System.Text; namesp..."
+- File: AuthSolution\Converters\BoolToAlignmentConverter.cs
+  Symbols: [BoolToAlignmentConverter, Convert, ConvertBack]
+  Preview: "using System; using System.Collections.Generic; using System.Globalization; using System.Linq; using System.Text; using System.Threading.Tasks; namesp..."
+- File: AuthSolution\Converters\BoolToColorConverter.cs
+  Symbols: [Convert, ConvertBack, BoolToColorConverter]
+  Preview: "using System; using System.Collections.Generic; using System.Globalization; using System.Linq; using System.Text; using System.Threading.Tasks; namesp..."
+- File: AuthSolution\Models\MessageDto.cs
+  Symbols: [MessageDto]
+  Preview: "using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Threading.Tasks; namespace AuthSolution.Models {   ..."
+- File: AuthSolution\Models\UserDto.cs
+  Symbols: [UserDto]
+  Preview: "using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Threading.Tasks; namespace AuthSolution.Models {   ..."
+- File: AuthSolution\Properties\launchSettings.json
+  Preview: "{  'profiles': {   'Windows Machine': {    'commandName': 'MsixPackage',    'nativeDebugging': false   }  } }"
+- File: AuthSolution\Services\ApiClient.cs
+  Symbols: [catch, catch, ApiClient, ApiClient]
+  Preview: "using System; using System.Collections.Generic; using System.Linq; using System.Net.Http.Json; using System.Text; using System.Text.Json; using System..."
+- File: AuthSolution\Services\AuthService.cs
+  Symbols: [AuthS]
+  Preview: "using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Text.Json; using System.Threading.Tasks; using stat..."
+- File: AuthSolution\Services\ChatService.cs
+  Symbols: [ChatService]
+  Preview: "using AuthSolution.Models; using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Threading.Tasks; namespa..."
+- File: AuthSolution\Services\NotificationService.cs
+  Symbols: [Initialize, NotificationService, NotificationService, NotificationEventArgs, CheckForNewMessages, StartPolling, StopPolling]
+  Preview: "using System; namespace AuthSolution.Services {   public class NotificationService   {     private readonly ApiClient _apiClient;     private int _cur..."
+- File: AuthSolution\Services\UserService.cs
+  Symbols: [UserService]
+  Preview: "using AuthSolution.Models; using System; using System.Collections.Generic; using System.Linq; using System.Net.Http.Json; using System.Text; using Sys..."
+- File: AuthSolution\Platforms\Android\AndroidManifest.xml
+  Preview: "<?xml version='1.0' encoding='utf-8'?> <manifest xmlns:android='http://schemas.android.com/apk/res/android'> 	<application android:allowBackup='true' ..."
+- File: AuthSolution\Platforms\Android\MainActivity.cs
+  Preview: "using Android.App; using Android.Content.PM; using Android.OS; namespace AuthSolution {   [Activity(Theme = '@style/Maui.SplashTheme', MainLauncher = ..."
+- File: AuthSolution\Platforms\Android\MainApplication.cs
+  Symbols: [MainApplication]
+  Preview: "using Android.App; using Android.Runtime; namespace AuthSolution {   [Application]   public class MainApplication : MauiApplication   {     public Mai..."
+- File: AuthSolution\Platforms\iOS\AppDelegate.cs
+  Symbols: [AppDelegate]
+  Preview: "using Foundation; namespace AuthSolution {   [Register('AppDelegate')]   public class AppDelegate : MauiUIApplicationDelegate   {     protected overri..."
+- File: AuthSolution\Platforms\iOS\Program.cs
+  Symbols: [Program, Main]
+  Preview: "using ObjCRuntime; using UIKit; namespace AuthSolution {   public class Program   {     // This is the main entry point of the application.     static..."
+- File: AuthSolution\Platforms\MacCatalyst\AppDelegate.cs
+  Symbols: [AppDelegate]
+  Preview: "using Foundation; namespace AuthSolution {   [Register('AppDelegate')]   public class AppDelegate : MauiUIApplicationDelegate   {     protected overri..."
+- File: AuthSolution\Platforms\MacCatalyst\Program.cs
+  Symbols: [Program, Main]
+  Preview: "using ObjCRuntime; using UIKit; namespace AuthSolution {   public class Program   {     // This is the main entry point of the application.     static..."
+- File: AuthSolution\Platforms\Tizen\Main.cs
+  Symbols: [Program]
+  Preview: "using System; using Microsoft.Maui; using Microsoft.Maui.Hosting; namespace AuthSolution {   internal class Program : MauiApplication   {     protecte..."
+- File: AuthSolution\Platforms\Tizen\tizen-manifest.xml
+  Preview: "<?xml version='1.0' encoding='utf-8'?> <manifest package='maui-application-id-placeholder' version='0.0.0' api-version='8' xmlns='http://tizen.org/ns/..."
+- File: AuthSolution\Platforms\Windows\App.xaml.cs
+  Preview: "using Microsoft.UI.Xaml; // To learn more about WinUI, the WinUI project structure, // and more about our project templates, see: http://aka.ms/winui-..."
+- File: AuthSolution\Resources\Raw\AboutAssets.txt
+  Preview: "Any raw assets you want to be deployed with your application can be placed in this directory (and child directories). Deployment of the asset to your ..."
+- File: AuthSolution\Platforms\Android\Resources\values\colors.xml
+  Preview: "<?xml version='1.0' encoding='utf-8'?> <resources>   <color name='colorPrimary'>#512BD4</color>   <color name='colorPrimaryDark'>#2B0B98</color>   <co..."

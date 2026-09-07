@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AuthSolution.HomePage"
+    Title="Home"
+    BackgroundColor="#0B141A">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Grid
+            Grid.Row="0"
+            Padding="16,15"
+            BackgroundColor="#202C33">
+
+            <Label
+                Text="Active Users"
+                TextColor="#E9EDEF"
+                FontSize="20"
+                FontAttributes="Bold"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+
+        <!-- USERS -->
+        <CollectionView
+            x:Name="UsersList"
+            Grid.Row="1"
+            SelectionMode="None"
+            BackgroundColor="#0B141A"
+            VerticalOptions="Fill">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="1" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border
+                        Margin="0"
+                        Padding="14,10"
+                        HeightRequest="72"
+                        BackgroundColor="#111B21"
+                        StrokeThickness="0"
+                        HorizontalOptions="Fill">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="0" />
+                        </Border.StrokeShape>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnUserTapped" />
+                        </Border.GestureRecognizers>
+
+                        <Grid
+                            ColumnDefinitions="56,*"
+                            ColumnSpacing="12">
+
+                            <!-- PROFILE ICON -->
+                            <Border
+                                Grid.Column="0"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                StrokeThickness="0"
+                                BackgroundColor="#54656F"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle
+                                        CornerRadius="25" />
+                                </Border.StrokeShape>
+
+                                <Label
+                                    Text="👤"
+                                    FontSize="25"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+
+                            </Border>
+
+
+                            <!-- USER INFO -->
+                            <Grid
+                                Grid.Column="1"
+                                RowDefinitions="*,Auto"
+                                VerticalOptions="Center">
+
+                                <Label
+                                    Grid.Row="0"
+                                    Text="{Binding Name}"
+                                    TextColor="#E9EDEF"
+                                    FontSize="17"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center" />
+
+                                <BoxView
+                                    Grid.Row="1"
+                                    HeightRequest="1"
+                                    BackgroundColor="#222D34"
+                                    HorizontalOptions="Fill"
+                                    Margin="0,8,0,0" />
+
+                            </Grid>
+
+                        </Grid>
+
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+
+        <!-- LOGOUT -->
+        <Button
+            Grid.Row="2"
+            Text="Logout"
+            Margin="16,10"
+            HeightRequest="48"
+            CornerRadius="24"
+            BackgroundColor="#00A884"
+            TextColor="White"
+            FontAttributes="Bold"
+            Clicked="OnLogoutClicked" />
+
+    </Grid>
+
+</ContentPage>

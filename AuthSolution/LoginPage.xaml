@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AuthSolution.LoginPage"
+    Title="Login"
+    BackgroundColor="#0B141A">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="24,50,24,30"
+            Spacing="0">
+
+            <!-- LOGO / TITLE -->
+            <VerticalStackLayout
+                Spacing="8"
+                Margin="0,20,0,40">
+
+                <Label
+                    Text="Welcome Back"
+                    TextColor="#E9EDEF"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" />
+
+                <Label
+                    Text="Login to continue"
+                    TextColor="#8696A0"
+                    FontSize="15"
+                    HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+
+
+            <!-- EMAIL -->
+            <Label
+                Text="Email"
+                TextColor="#BFC9CE"
+                FontSize="14"
+                Margin="4,0,0,8" />
+
+            <Border
+                BackgroundColor="#202C33"
+                Stroke="#2A3942"
+                StrokeThickness="5"
+                HeightRequest="52"
+                Padding="0,0"
+                Margin="0,0,0,20">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <Entry
+                    x:Name="EmailEntry"
+                    Placeholder="Enter your email"
+                    PlaceholderColor="#8696A0"
+                    TextColor="#E9EDEF"
+                    FontSize="16"
+                    BackgroundColor="Transparent"
+                    Keyboard="Email"
+                    VerticalOptions="Center" />
+
+            </Border>
+
+
+            <!-- PASSWORD -->
+            <Label
+                Text="Password"
+                TextColor="#BFC9CE"
+                FontSize="14"
+                Margin="4,0,0,8" />
+
+            <Border
+                BackgroundColor="#202C33"
+                Stroke="#2A3942"
+                StrokeThickness="5"
+                HeightRequest="52"
+                Padding="0,0"
+                Margin="0,0,0,28">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <Entry
+                    x:Name="PasswordEntry"
+                    Placeholder="Enter your password"
+                    PlaceholderColor="#8696A0"
+                    TextColor="#E9EDEF"
+                    FontSize="16"
+                    BackgroundColor="Transparent"
+                    IsPassword="True"
+                    VerticalOptions="Center" />
+
+            </Border>
+
+
+            <!-- LOGIN -->
+            <Button
+                Text="Login"
+                Clicked="OnLoginClicked"
+                HeightRequest="52"
+                CornerRadius="26"
+                FontSize="16"
+                FontAttributes="Bold"
+                BackgroundColor="#00A884"
+                TextColor="White"
+                Margin="0,0,0,16" />
+
+
+            <!-- SIGN UP -->
+            <Button
+                Text="Create New Account"
+                Clicked="OnSignupClicked"
+                HeightRequest="48"
+                CornerRadius="24"
+                FontSize="15"
+                BackgroundColor="#202C33"
+                BorderColor="#2A3942"
+                BorderWidth="1"
+                TextColor="#00A884"
+                Margin="0,0,0,8" />
+
+
+            <!-- FORGOT PASSWORD -->
+            <Button
+                Text="Forgot Password?"
+                Clicked="OnForgotClicked"
+                HeightRequest="45"
+                FontSize="14"
+                BackgroundColor="Transparent"
+                TextColor="#53BDEB"
+                Padding="0" />
+
+
+            <!-- FOOTER -->
+            <Label
+                Text="Your messages are private and secure"
+                TextColor="#667781"
+                FontSize="12"
+                HorizontalOptions="Center"
+                Margin="0,45,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
