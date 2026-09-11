@@ -1,7 +1,6 @@
 using Api.Hubs;
 using Api.Models;
 using Api.Services;
-using Api.Services;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,8 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var firebaseJson =
-    builder.Configuration["Firebase:ServiceAccountJson"];
+var firebaseJson = await File.ReadAllTextAsync("firebasesdk.json");
 
 if (string.IsNullOrWhiteSpace(firebaseJson))
 {
@@ -23,7 +21,9 @@ if (string.IsNullOrWhiteSpace(firebaseJson))
 
 FirebaseApp.Create(new AppOptions
 {
-    Credential = GoogleCredential.FromJson(firebaseJson)
+    Credential = CredentialFactory
+    .FromJson<ServiceAccountCredential>(firebaseJson)
+    .ToGoogleCredential()
 });
 
 // Allow overriding connection string via environment in Docker

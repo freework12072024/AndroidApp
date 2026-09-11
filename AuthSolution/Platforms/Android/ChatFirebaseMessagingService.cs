@@ -10,6 +10,8 @@ namespace AuthSolution.Platforms.Android;
 [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
 public sealed class ChatFirebaseMessagingService : FirebaseMessagingService
 {
+#pragma warning disable CS0618
+#pragma warning disable CS0672
     public override void OnNewToken(string token)
     {
         base.OnNewToken(token);
@@ -58,36 +60,67 @@ public sealed class ChatFirebaseMessagingService : FirebaseMessagingService
     }
 
     private void ShowNotification(
-        string title,
-        string text,
-        int chatUserId,
-        int messageId)
+    string title,
+    string text,
+    int chatUserId,
+    int messageId)
     {
         var intent = new Intent(this, typeof(MainActivity));
-        intent.PutExtra(MainActivity.ChatUserIdExtra, chatUserId);
-        intent.SetAction($"chat-{chatUserId}-{messageId}");
-        intent.AddFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
+
+        intent.PutExtra(
+            MainActivity.ChatUserIdExtra,
+            chatUserId);
+
+        intent.SetAction(
+            $"chat-{chatUserId}-{messageId}");
+
+        intent.AddFlags(
+            ActivityFlags.ClearTop |
+            ActivityFlags.SingleTop);
+
+        // Android 23+ ke liye Immutable
+        var pendingIntentFlags =
+            PendingIntentFlags.UpdateCurrent;
+
+        if (OperatingSystem.IsAndroidVersionAtLeast(23))
+        {
+            pendingIntentFlags |=
+                PendingIntentFlags.Immutable;
+        }
 
         var pendingIntent = PendingIntent.GetActivity(
             this,
             messageId,
             intent,
-            PendingIntentFlags.UpdateCurrent | PendingIntentFlags.Immutable);
+            pendingIntentFlags);
+#pragma warning disable CS8602
+        var builder = new NotificationCompat.Builder(
+            this,
+            MainActivity.ChatChannelId);
 
-        var notification = new NotificationCompat.Builder(
-                this,
-                MainActivity.ChatChannelId)
-            .SetSmallIcon(Resource.Mipmap.appicon)
+        builder
+            .SetSmallIcon(Resource.Drawable.notification_icon)
             .SetContentTitle(title)
             .SetContentText(text)
-            .SetStyle(new NotificationCompat.BigTextStyle().BigText(text))
+            .SetStyle(
+                new NotificationCompat.BigTextStyle()
+                    .BigText(text))
             .SetAutoCancel(true)
-            .SetCategory(NotificationCompat.CategoryMessage)
-            .SetPriority((int)NotificationPriority.High)
-            .SetContentIntent(pendingIntent)
-            .Build();
+            .SetCategory(
+                NotificationCompat.CategoryMessage)
+            .SetPriority(
+                (int)NotificationPriority.High)
+            .SetContentIntent(pendingIntent);
 
-        NotificationManagerCompat.From(this)
-            .Notify(messageId == 0 ? chatUserId : messageId, notification);
+        var notification = builder.Build();
+
+        var notificationManager =
+            NotificationManagerCompat.From(this);
+
+        notificationManager.Notify(
+            messageId == 0
+                ? chatUserId
+                : messageId,
+            notification);
     }
 }

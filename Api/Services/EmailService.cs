@@ -20,7 +20,7 @@ namespace Api.Services
         public async Task SendEmailAsync(string toEmail, string subject, string body)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("My App", _config["Email:SmtpUser"]));
+            message.From.Add(new MailboxAddress("My App", _config["Email:SmtpUser"]!));
             message.To.Add(new MailboxAddress("", toEmail));
             message.Subject = subject;
 

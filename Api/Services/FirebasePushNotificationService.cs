@@ -16,10 +16,10 @@ public sealed class FirebasePushNotificationService
             return;
 
         var body = text.Length > 160 ? text[..160] : text;
-
+#pragma warning disable CS0618
         var message = new MulticastMessage
         {
-            Tokens = tokens,
+            Tokens = tokens.ToList(),
 
             // Background / screen-off state mein Android system
             // isi notification payload ko show karega.

@@ -57,7 +57,7 @@ public partial class SignupPage : ContentPage
     {
         if (!ValidateInputs())
         {
-            await DisplayAlert("Error", "Please fill all fields correctly", "OK");
+            await DisplayAlertAsync("Error", "Please fill all fields correctly", "OK");
             return;
         }
 
@@ -77,13 +77,13 @@ public partial class SignupPage : ContentPage
         );
         if (response != null)
         {
-            await DisplayAlert("Success", "Account created. Check email for activation code.", "OK");
+            await DisplayAlertAsync("Success", "Account created. Check email for activation code.", "OK");
             // navigate to activation page to enter OTP
             await Navigation.PushAsync(new ActivationPage(_auth, EmailEntry.Text));
         }
         else
         {
-            await DisplayAlert("Error", "Signup failed", "OK");
+            await DisplayAlertAsync("Error", "Signup failed", "OK");
         }
     }
 }

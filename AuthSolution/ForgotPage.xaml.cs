@@ -26,7 +26,7 @@ public partial class ForgotPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(email))
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Error",
                 "Please enter your email",
                 "OK");
@@ -38,7 +38,7 @@ public partial class ForgotPage : ContentPage
 
         if (response?.token != null)
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Success",
                 "Check your email for the reset token",
                 "OK");
@@ -52,7 +52,7 @@ public partial class ForgotPage : ContentPage
         }
         else
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Error",
                 "User not found",
                 "OK");

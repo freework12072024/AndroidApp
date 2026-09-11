@@ -39,7 +39,7 @@ public class MainActivity : MauiAppCompatActivity
 
     private void CreateChatChannel()
     {
-        if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+        if (!OperatingSystem.IsAndroidVersionAtLeast(26))
             return;
 
         var channel = new NotificationChannel(
@@ -53,7 +53,9 @@ public class MainActivity : MauiAppCompatActivity
 
         channel.EnableVibration(true);
 
-        var manager = GetSystemService(NotificationService) as NotificationManager;
+        var manager =
+            GetSystemService(NotificationService) as NotificationManager;
+
         manager?.CreateNotificationChannel(channel);
     }
 

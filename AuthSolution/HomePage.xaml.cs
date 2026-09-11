@@ -28,7 +28,7 @@ public partial class HomePage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Error",
                 $"Users load failed:\n{ex.Message}",
                 "OK");
@@ -84,7 +84,7 @@ public partial class HomePage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Chat Error",
                 ex.ToString(),
                 "OK");

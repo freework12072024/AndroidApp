@@ -99,32 +99,32 @@ namespace Api.Controllers
                 result.Id,
                 result.Text);
 
-            // Optionally notify sender as well (for echo)
-            await _hubContext.Clients
-                .Group($"user-{request.SenderId}")
-                .SendAsync("ReceiveMessage", result);
+    //        // Optionally notify sender as well (for echo)
+    //        await _hubContext.Clients
+    //            .Group($"user-{request.SenderId}")
+    //            .SendAsync("ReceiveMessage", result);
 
-            var senderName = await _db.Users
-    .Where(x => x.Id == request.SenderId)
-    .Select(x => (x.FirstName + " " + x.LastName).Trim())
-    .SingleAsync();
+    //        var senderName = await _db.Users
+    //.Where(x => x.Id == request.SenderId)
+    //.Select(x => (x.FirstName + " " + x.LastName).Trim())
+    //.SingleAsync();
 
-            var receiverTokens = await _db.UserDevices
-                .Where(x =>
-                    x.UserId == request.ReceiverId &&
-                    x.IsActive &&
-                    x.Platform == "android")
-                .Select(x => x.PushIdentifier)
-                .ToListAsync();
+    //        var receiverTokens = await _db.UserDevices
+    //            .Where(x =>
+    //                x.UserId == request.ReceiverId &&
+    //                x.IsActive &&
+    //                x.Platform == "android")
+    //            .Select(x => x.PushIdentifier)
+    //            .ToListAsync();
 
-            await _pushNotifications.SendChatMessageAsync(
-                receiverTokens,
-                request.SenderId,
-                string.IsNullOrWhiteSpace(senderName)
-                    ? "New message"
-                    : senderName,
-                result.Id,
-                result.Text);
+    //        await _pushNotifications.SendChatMessageAsync(
+    //            receiverTokens,
+    //            request.SenderId,
+    //            string.IsNullOrWhiteSpace(senderName)
+    //                ? "New message"
+    //                : senderName,
+    //            result.Id,
+    //            result.Text);
 
             return Ok(result);
         }

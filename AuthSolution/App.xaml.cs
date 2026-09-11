@@ -14,16 +14,21 @@ public partial class App : Application
         InitializeComponent();
 
         _services = services;
+    }
 
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
         var loginPage = _services.GetService<LoginPage>();
+
+        Page page;
 
         if (loginPage != null)
         {
-            MainPage = new NavigationPage(loginPage);
+            page = new NavigationPage(loginPage);
         }
         else
         {
-            MainPage = new NavigationPage(new ContentPage
+            page = new NavigationPage(new ContentPage
             {
                 Content = new Label
                 {
@@ -33,6 +38,8 @@ public partial class App : Application
                 }
             });
         }
+
+        return new Window(page);
     }
 
     public void SetCurrentUser(int userId)

@@ -28,7 +28,7 @@ public partial class ResetPage : ContentPage
         if (string.IsNullOrWhiteSpace(token) ||
             string.IsNullOrWhiteSpace(newPassword))
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Error",
                 "Please enter both token and new password",
                 "OK");
@@ -42,7 +42,7 @@ public partial class ResetPage : ContentPage
         {
             if (res.message.Contains("Password updated"))
             {
-                await DisplayAlert(
+                await DisplayAlertAsync(
                     "Success",
                     "Password reset",
                     "OK");
@@ -57,7 +57,7 @@ public partial class ResetPage : ContentPage
             }
             else
             {
-                await DisplayAlert(
+                await DisplayAlertAsync(
                     "Failure",
                     res.message,
                     "OK");
@@ -65,7 +65,7 @@ public partial class ResetPage : ContentPage
         }
         else
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Failure",
                 "Something went wrong",
                 "OK");

@@ -156,7 +156,7 @@ namespace Api.Controllers
             catch (Exception ex)
             {
                 // Log the exception (not shown here for brevity)
-                return StatusCode(500, new { message = "An error occurred while processing your request." });
+                return StatusCode(500, new { message = $"An error occurred while processing your request.{ex.Message}" });
             }
 
         }

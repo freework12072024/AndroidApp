@@ -92,7 +92,7 @@ public partial class LoginPage : ContentPage
         }
         else
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Error",
                 "Invalid credentials",
                 "OK");

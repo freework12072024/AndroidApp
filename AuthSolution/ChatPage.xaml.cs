@@ -114,7 +114,7 @@ public partial class ChatPage : ContentPage
             }
             else
             {
-                await DisplayAlert(
+                await DisplayAlertAsync(
                     "Error",
                     "Message could not be sent.",
                     "OK");
@@ -122,7 +122,7 @@ public partial class ChatPage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Error",
                 ex.Message,
                 "OK");

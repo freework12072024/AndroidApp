@@ -20,19 +20,19 @@ public partial class ActivationPage : ContentPage
         var code = CodeEntry.Text?.Trim();
         if (string.IsNullOrWhiteSpace(code))
         {
-            await DisplayAlert("Error", "Please enter the activation code", "OK");
+            await DisplayAlertAsync("Error", "Please enter the activation code", "OK");
             return;
         }
 
         var res = await _auth.Activate(_email, code);
         if (res != null && res.message.Contains("Account activated"))
         {
-            await DisplayAlert("Success", "Account activated", "OK");
+            await DisplayAlertAsync("Success", "Account activated", "OK");
             await Navigation.PopToRootAsync();
         }
         else
         {
-            await DisplayAlert("Error", res?.message ?? "Activation failed", "OK");
+            await DisplayAlertAsync("Error", res?.message ?? "Activation failed", "OK");
         }
     }
 
@@ -40,8 +40,8 @@ public partial class ActivationPage : ContentPage
     {
         var resend = await _auth.Forgot(_email);
         if (resend != null)
-            await DisplayAlert("Info", "Activation code resent (if email exists)", "OK");
+            await DisplayAlertAsync("Info", "Activation code resent (if email exists)", "OK");
         else
-            await DisplayAlert("Error", "Could not resend code", "OK");
+            await DisplayAlertAsync("Error", "Could not resend code", "OK");
     }
 }
