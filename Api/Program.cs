@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var firebaseJson = await File.ReadAllTextAsync("firebasesdk.json");
+var firebaseJson = Environment.GetEnvironmentVariable("Firebase__ServiceAccountJson");
 
 if (string.IsNullOrWhiteSpace(firebaseJson))
 {
