@@ -1,0 +1,20 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+x:Class="AuthSolution.SignupPage"
+Title="Sign Up">
+    <ScrollView>
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Entry x:Name="FirstNameEntry" Placeholder="First name" />
+        <Entry x:Name="LastNameEntry" Placeholder="Last name" />
+        <Entry x:Name="AddressEntry" Placeholder="Address" />
+        <Picker x:Name="StatePicker" Title="Select state" SelectedIndexChanged="StatePicker_SelectedIndexChanged" />
+        <Picker x:Name="CityPicker" Title="Select city" />
+        <Entry x:Name="PincodeEntry" Placeholder="Pincode" Keyboard="Numeric" />
+        <Entry x:Name="MobileEntry" Placeholder="Mobile" Keyboard="Telephone" />
+        <Entry x:Name="EmailEntry" Placeholder="Email" />
+        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+        <Button Text="Create Account" Clicked="OnSignupClicked" />
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

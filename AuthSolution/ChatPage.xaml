@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AuthSolution.ChatPage"
+    BackgroundColor="#0B141A">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- ========================= -->
+        <!-- MESSAGES -->
+        <!-- ========================= -->
+
+        <CollectionView
+            x:Name="MessagesList"
+            Grid.Row="0"
+            BackgroundColor="#0B141A"
+            SelectionMode="None">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="2" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid Padding="8,3">
+
+                        <!-- ========================= -->
+                        <!-- RECEIVED MESSAGE - LEFT -->
+                        <!-- ========================= -->
+
+                        <Frame
+                            HorizontalOptions="Start"
+                            MaximumWidthRequest="280"
+                            Padding="10,7"
+                            CornerRadius="10"
+                            HasShadow="False"
+                            BackgroundColor="#202C33"
+                            IsVisible="True">
+
+                            <Frame.Triggers>
+                                <DataTrigger
+                                    TargetType="Frame"
+                                    Binding="{Binding IsMine}"
+                                    Value="True">
+
+                                    <Setter
+                                        Property="IsVisible"
+                                        Value="False" />
+
+                                </DataTrigger>
+                            </Frame.Triggers>
+
+                            <Label
+                                Text="{Binding Text}"
+                                TextColor="White"
+                                FontSize="15"
+                                LineBreakMode="WordWrap" />
+
+                        </Frame>
+
+
+                        <!-- ========================= -->
+                        <!-- SENT MESSAGE - RIGHT -->
+                        <!-- ========================= -->
+
+                        <Frame
+                            HorizontalOptions="End"
+                            MaximumWidthRequest="280"
+                            Padding="10,7"
+                            CornerRadius="10"
+                            HasShadow="False"
+                            BackgroundColor="#005C4B"
+                            IsVisible="False">
+
+                            <Frame.Triggers>
+                                <DataTrigger
+                                    TargetType="Frame"
+                                    Binding="{Binding IsMine}"
+                                    Value="True">
+
+                                    <Setter
+                                        Property="IsVisible"
+                                        Value="True" />
+
+                                </DataTrigger>
+                            </Frame.Triggers>
+
+                            <Grid
+                                ColumnDefinitions="*,Auto"
+                                ColumnSpacing="6">
+
+                                <Label
+                                    Grid.Column="0"
+                                    Text="{Binding Text}"
+                                    TextColor="White"
+                                    FontSize="15"
+                                    LineBreakMode="WordWrap"
+                                    VerticalOptions="Center" />
+
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Spacing="0"
+                                    VerticalOptions="End">
+
+                                    <Label
+                                        Text="{Binding SentAt, StringFormat='{0:h:mm tt}'}"
+                                        TextColor="#9ED8CB"
+                                        FontSize="9"
+                                        HorizontalOptions="End" />
+
+                                    <Label
+                                        Text="✓✓"
+                                        TextColor="#53BDEB"
+                                        FontSize="10"
+                                        HorizontalOptions="End" />
+
+                                </VerticalStackLayout>
+
+                            </Grid>
+
+                        </Frame>
+
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+
+        <!-- ========================= -->
+        <!-- MESSAGE INPUT -->
+        <!-- ========================= -->
+
+        <Grid
+            Grid.Row="1"
+            Padding="8,6"
+            BackgroundColor="#202C33"
+            ColumnDefinitions="*,Auto"
+            ColumnSpacing="8">
+
+            <Border
+                Grid.Column="0"
+                BackgroundColor="#2A3942"
+                StrokeThickness="0"
+                Padding="12,0"
+                HeightRequest="44">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Entry
+                    x:Name="MessageEntry"
+                    Placeholder="Type a message"
+                    PlaceholderColor="#8696A0"
+                    TextColor="#E9EDEF"
+                    FontSize="15"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Center" />
+
+            </Border>
+
+
+            <!-- SEND BUTTON -->
+
+            <Button
+                Grid.Column="1"
+                Text="➤"
+                FontSize="20"
+                WidthRequest="44"
+                HeightRequest="44"
+                CornerRadius="22"
+                Padding="0"
+                BackgroundColor="#00A884"
+                TextColor="White"
+                Clicked="OnSendClicked" />
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
