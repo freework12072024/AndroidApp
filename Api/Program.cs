@@ -15,6 +15,24 @@ var firebaseJson = Environment.GetEnvironmentVariable("Firebase__ServiceAccountJ
 
 if (string.IsNullOrWhiteSpace(firebaseJson))
 {
+    var firebaseFile = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        "Downloads",
+        "firebasesdk.json");
+
+    if (File.Exists(firebaseFile))
+    {
+        firebaseJson = File.ReadAllText(firebaseFile);
+    }
+}
+
+Console.WriteLine(
+    $"Firebase config loaded: {!string.IsNullOrWhiteSpace(firebaseJson)}");
+
+Console.WriteLine(
+    $"Firebase config length: {firebaseJson?.Length ?? 0}");
+if (string.IsNullOrWhiteSpace(firebaseJson))
+{
     throw new InvalidOperationException(
         "Firebase__ServiceAccountJson environment variable is required.");
 }
