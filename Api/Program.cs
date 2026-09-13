@@ -129,12 +129,10 @@ if (app.Environment.IsDevelopment() || !string.IsNullOrEmpty(Environment.GetEnvi
     db.Database.Migrate();
 }
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER")))
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 // Only use HTTPS redirection when not running inside a container (container binds HTTP only)
 if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER")))
